@@ -1,2 +1,2 @@
 # AppSW-Prototype
-Playdata ApplicationSW Prototype
+ApplicationSW Prototype
