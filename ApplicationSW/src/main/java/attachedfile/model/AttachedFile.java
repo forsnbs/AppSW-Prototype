@@ -22,6 +22,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import person.model.Person;
 import personcourse.model.PersonCourse;
 
 @NoArgsConstructor
@@ -36,6 +37,10 @@ public class AttachedFile {
 	@ManyToOne
 	@JoinColumn(name = "course_no")
 	private Course course;
+
+	@ManyToOne
+	@JoinColumn(name = "person_no")
+	private Person person;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumns({

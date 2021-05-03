@@ -17,7 +17,7 @@
   </head>
 <body class="text-center">
   <div class="container">
-    <form id="registerMgrForm" action="" method="post" class="form-mgr-reg">
+    <form id="register-mgr-form" action="" method="post" class="form-mgr-reg">
       <div>
         <img class="mb-4" src="img/playdata_signature.png" alt="" width="100%" height="auto">
         <h1 class="h3 mb-3 font-weight-normal">Manager Registration</h1>
@@ -60,7 +60,7 @@
   
   <script type="text/javascript">
     const register_button = document.getElementById("register-mgr");
-    const form = document.getElementById("registerMgrForm");
+    const form = document.getElementById("register-mgr-form");
   
     register_button.addEventListener("click", ()=>{
       let entries = new FormData(form).entries();
@@ -69,7 +69,7 @@
   	  let data = JSON.stringify(params_entries);
   	
   	  let xhr = new XMLHttpRequest();
-  	  let url = "http://localhost:8081/managers";
+  	  let url = "http://localhost:8081/api/managers";
 
   	xhr.onreadystatechange = function(){
   		if(xhr.readyState == 4 && xhr.status == 200){

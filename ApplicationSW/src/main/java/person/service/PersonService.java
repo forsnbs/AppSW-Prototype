@@ -7,5 +7,5 @@ public interface PersonService {
 	
 	public void insertManager(MgrRegistrationReqDto mgrRegistrationReqDto);
 
-	public void insertFirstApplicant(FirstApplicationDto firstApplicationDto);
+	public Long insertFirstApplicant(FirstApplicationDto firstApplicationDto);
 }

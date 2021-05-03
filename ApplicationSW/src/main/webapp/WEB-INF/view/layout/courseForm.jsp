@@ -5,7 +5,7 @@
     <div class="col-md-6 order-md-1">
         <form id="register-course-form" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
             <div class="row">
-	            <div class="col-md-12 mb-3 py-2">
+	            <div class="col-md-12 mb-3">
 	                <label for="courseName">과정명</label>
 	                <input type="text" name="courseName" class="form-control" id="courseName" placeholder="" value="${course.courseName}" required>
 		            <div class="invalid-feedback">

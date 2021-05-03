@@ -28,6 +28,8 @@ public class CourseResponseDto {
 	
 	private String courseName;
 	
+	private String courseUrl;
+	
 	@Enumerated(EnumType.STRING)
 	private CourseCategoryType courseCategory;
 	
@@ -62,6 +64,7 @@ public class CourseResponseDto {
 		super();
 		this.courseNo = course.getCourseNo();
 		this.courseName = course.getCourseName();
+		this.courseUrl = course.getCourseUrl();
 		this.courseCategory = course.getCourseCategory();
 		this.courseProgress = course.getCourseProgress();
 		this.courseCapacity = course.getCourseCapacity();

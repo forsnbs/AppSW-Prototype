@@ -1,8 +1,5 @@
 package personcourse.service;
 
-import org.springframework.stereotype.Service;
-
-@Service
-public class PersonCourseService {
-
+public interface PersonCourseService {
+	void insertFirstAppInfo(Long personNo, Long courseNo);
 }

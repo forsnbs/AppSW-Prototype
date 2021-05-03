@@ -17,6 +17,8 @@ public interface CourseService {
 	Course getCourseByCourseNo(Long courseNo);
 	
 	Course getCourseByCourseName(String courseName);
+
+	Course getCourseByCourseUrl(String courseUrl);
 	
 	
 }

@@ -9,6 +9,7 @@
         </button>
   </div>
 </div>
+<div id="no" style="display: none">${course.courseNo}</div>
 <div class="table-responsive">
     <table class="table table-sm">
         <thead>

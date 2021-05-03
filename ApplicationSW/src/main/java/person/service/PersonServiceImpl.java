@@ -28,7 +28,7 @@ public class PersonServiceImpl implements PersonService{
 	
 	@Override
 	@Transactional
-	public void insertFirstApplicant(FirstApplicationDto firstApplicationDto) {
-		personRepository.save(firstApplicationDto.toEntity());
+	public Long insertFirstApplicant(FirstApplicationDto firstApplicationDto) {
+		return personRepository.save(firstApplicationDto.toEntity()).getPersonNo();
 	}
 }

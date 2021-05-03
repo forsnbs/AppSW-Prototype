@@ -19,25 +19,3 @@
     })
   }, false)
 })()
-
-const firstapp_submit_button = document.getElementById("first-app-submit");
-const form = document.getElementById("first-app-form");
-
-firstapp_submit_button.addEventListener("click", ()=>{
-  let entries = new FormData(form).entries();
-  let params = new URLSearchParams(entries);
-  let params_entries = Object.fromEntries(params);
-  let data = JSON.stringify(params_entries);
-  
-  let xhr = new XMLHttpRequest();
-  let url = "http://localhost:8081/applicants";
-
-  xhr.onreadystatechange = function(){
-      if(xhr.readyState == 4 && xhr.status == 200){
-        alert(data);
-        }
-    };
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-    xhr.send(data);
-  });

@@ -26,8 +26,8 @@ public class CourseServiceImpl implements CourseService{
 	@Override
 	@Transactional
 	public Long insertCourse(CourseRegistrationDto courseRegistrationDto) {
-//		Optional<CourseRegistrationDto> ofNullable = Optional.ofNullable(courseRegistrationDto);
-//		courseRegistrationDto = ofNullable.orElseThrow(() -> new NotFoundException("등록 과정이 없습니다."));
+		Optional<CourseRegistrationDto> ofNullable = Optional.ofNullable(courseRegistrationDto);
+		courseRegistrationDto = ofNullable.orElseThrow(() -> new NotFoundException("등록 하고자 하는 과정이 없습니다."));
 		return courseRepository.save(courseRegistrationDto.toEntity()).getCourseNo();
 	}
 
@@ -72,7 +72,6 @@ public class CourseServiceImpl implements CourseService{
 		for (Course course : courseRepository.findByCourseProgress(courseProgressType)) {
 			courseResponseDtos.add(new CourseResponseDto(course));
 		}
-		
 		return courseResponseDtos;
 	}
 
@@ -81,6 +80,13 @@ public class CourseServiceImpl implements CourseService{
 	public Course getCourseByCourseNo(Long courseNo) {
 		Course course = courseRepository.findById(courseNo).orElseThrow(() -> new NotFoundException("등록 과정이 없습니다."));
 		System.out.println(course.getCourseName());
+		return course;
+	}
+	
+	@Override
+	@Transactional
+	public Course getCourseByCourseUrl(String courseUrl) {
+		Course course = courseRepository.findByCourseUrl(courseUrl).orElseThrow(() -> new NotFoundException("해당 과정이 없습니다."));
 		return course;
 	}
 	

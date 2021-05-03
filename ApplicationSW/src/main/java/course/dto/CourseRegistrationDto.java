@@ -24,6 +24,8 @@ import lombok.ToString;
 public class CourseRegistrationDto {
 	
 	private String courseName;
+	
+	private String courseUrl;
 
 	@Enumerated(EnumType.STRING)
 	private CourseCategoryType courseCategory;
@@ -48,6 +50,7 @@ public class CourseRegistrationDto {
 	public Course toEntity() {
 		Course course = Course.builder()
 							.courseName(courseName)
+							.courseUrl(courseUrl)
 							.courseCategory(courseCategory)
 							.courseProgress(courseProgress)
 							.courseCapacity(courseCapacity)

@@ -49,19 +49,4 @@ function fileAttachment(){
   }
 }
 
-const register_button = document.getElementById("register-course-btn");
-const form = document.getElementById("register-course-form");
 
-register_button.addEventListener("click", ()=>{
-    let data = new FormData(form);
-    
-    let xhr = new XMLHttpRequest();
-    let url = "http://localhost:8081/course";
-
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState == 4 && xhr.status == 200){
-      }
-    };
-    xhr.open("POST", url, false);
-    xhr.send(data);
-});

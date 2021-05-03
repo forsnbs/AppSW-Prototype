@@ -31,9 +31,13 @@ public class CourseController {
 	}
 	
 	@PostMapping(value = "/course")
-	public String registerCourse(CourseRegistrationDto courseRegistrationDto, MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws ServletException, IOException {
+	public String registerCourse(CourseRegistrationDto courseRegistrationDto, MultipartHttpServletRequest multipartRequest) {
 		Long courseNo = courseServiceImpl.insertCourse(courseRegistrationDto);
-		attachedFileServiceImpl.insertAttachedFile(courseNo, courseRegistrationDto, multipartRequest);
+		try {
+			attachedFileServiceImpl.insertAttachedFile(courseNo, courseRegistrationDto, multipartRequest);
+		} catch (IllegalStateException | IOException e) {
+			e.printStackTrace();
+		}
 		return "redirect:/main";
 	}
 	
@@ -53,6 +57,7 @@ public class CourseController {
 	@GetMapping(value = "/course/main/{courseNo}")
 	public String viewCourseMainPage(Model model, @PathVariable Long courseNo) {
 		model.addAttribute("course", courseServiceImpl.getCourseByCourseNo(courseNo));
+		model.addAttribute("personCourse", courseServiceImpl.getCourseByCourseNo(courseNo).getPersonCourses());
 		return "courseMain";
 	}
 	

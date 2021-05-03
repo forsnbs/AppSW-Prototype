@@ -36,6 +36,8 @@ public class Course {
 	
 	private String courseName;
 	
+	private String courseUrl;
+	
 	@Enumerated(EnumType.STRING)
 	private CourseCategoryType courseCategory;
 	
@@ -71,7 +73,7 @@ public class Course {
 	private List<PersonCourse> personCourses = new ArrayList<PersonCourse>();
 	
 	@Builder
-	public Course(Long courseNo, String courseName, CourseCategoryType courseCategory,
+	public Course(Long courseNo, String courseUrl, String courseName, CourseCategoryType courseCategory,
 			CourseProgressType courseProgress, int courseCapacity, LocalDate courseStartDate, LocalDate courseEndDate,
 			CourseLocationType courseLocation, CourseClassroomType courseClassroom, int courseInterviewPassNo, String courseCanceledReason,
 			LocalDateTime courseRegisterdDatetime, LocalDateTime courseModifiedDatetime,
@@ -79,6 +81,7 @@ public class Course {
 		super();
 		this.courseNo = courseNo;
 		this.courseName = courseName;
+		this.courseUrl = courseUrl;
 		this.courseCategory = courseCategory;
 		this.courseProgress = courseProgress;
 		this.courseCapacity = courseCapacity;

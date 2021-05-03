@@ -9,5 +9,7 @@ import person.model.Person;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long>{
+	
 	Optional<Person> findByPersonEmail(String personEmail);
+	
 }

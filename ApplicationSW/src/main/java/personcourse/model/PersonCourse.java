@@ -3,6 +3,8 @@ package personcourse.model;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -13,6 +15,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import course.model.Course;
+import deliveredEmail.enumtype.DeliveredEmailCategoryType;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import person.model.Person;
@@ -25,18 +29,14 @@ import personcourse.config.PersonCoursePK;
 public class PersonCourse {
 	
 	@Id
-	@ManyToOne(targetEntity = Course.class ,fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = Person.class ,fetch = FetchType.LAZY)
 	@JoinColumn(name = "person_no")
 	private Person person;
 	
 	@Id
 	@ManyToOne(targetEntity = Course.class ,fetch = FetchType.LAZY)
-	@JoinColumn(name = "course_no", insertable = false, updatable = false)
+	@JoinColumn(name = "course_no")
 	private Course course;
-	
-	@ManyToOne(targetEntity = Person.class ,fetch = FetchType.LAZY)
-	@JoinColumn(name = "person_no", insertable = false, updatable = false)
-	private Person interviewer;
 	
 	@CreationTimestamp
 	private LocalDateTime relationStartDate;
@@ -44,13 +44,16 @@ public class PersonCourse {
 	@UpdateTimestamp
 	private LocalDateTime relationEndDate;
 	
-	private char detailApplicationFlag;
+	private String detailApplicationFlag;
 	
-	private char interviewFlag;
+	private String interviewFlag;
 	
-	private char interviewPassFlag;
+	private String interviewPassFlag;
 	
-	private char deliveredEmailFlag;
+	private String deliveredEmailFlag;
+	
+	@Enumerated(EnumType.STRING)
+	private DeliveredEmailCategoryType deliveredEmailCategory;
 	
 	private String courseDropoutReason;
 	
@@ -60,17 +63,17 @@ public class PersonCourse {
 	
 	private String interviewComment;
 	
-	private char courseDropoutFlag;
+	private String courseDropoutFlag;
 	
-	private char unemploymentBenefitReceiptFlag;
+	private String unemploymentBenefitReceiptFlag;
 	
-	private char employmentInsuaranceJoinFlag;
+	private String employmentInsuaranceJoinFlag;
 	
-	private char naeilbeaumCardIssueFlag;
+	private String naeilbeaumCardIssueFlag;
 	
-	private char jobTrainingExperienceFlag;
+	private String jobTrainingExperienceFlag;
 	
-	private char projectExperienceFlag;
+	private String projectExperienceFlag;
 	
 	private String githubExperience;
 	
@@ -80,4 +83,44 @@ public class PersonCourse {
 	
 	private String validItCertificate;
 	
+	@Builder
+	public PersonCourse(Person person, Course course, LocalDateTime relationStartDate,
+			LocalDateTime relationEndDate, String detailApplicationFlag, String interviewFlag, String interviewPassFlag,
+			String deliveredEmailFlag, String courseDropoutReason, LocalDateTime interviewDatetime,
+			String interviewLocation, String interviewComment, String courseDropoutFlag,
+			String unemploymentBenefitReceiptFlag, String employmentInsuaranceJoinFlag, String naeilbeaumCardIssueFlag,
+			String jobTrainingExperienceFlag, String projectExperienceFlag, String githubExperience, int topcitScore,
+			String learningProgrammingLanguage, String validItCertificate) {
+		super();
+		this.person = person;
+		this.course = course;
+		this.relationStartDate = relationStartDate;
+		this.relationEndDate = relationEndDate;
+		this.detailApplicationFlag = detailApplicationFlag;
+		this.interviewFlag = interviewFlag;
+		this.interviewPassFlag = interviewPassFlag;
+		this.deliveredEmailFlag = deliveredEmailFlag;
+		this.courseDropoutReason = courseDropoutReason;
+		this.interviewDatetime = interviewDatetime;
+		this.interviewLocation = interviewLocation;
+		this.interviewComment = interviewComment;
+		this.courseDropoutFlag = courseDropoutFlag;
+		this.unemploymentBenefitReceiptFlag = unemploymentBenefitReceiptFlag;
+		this.employmentInsuaranceJoinFlag = employmentInsuaranceJoinFlag;
+		this.naeilbeaumCardIssueFlag = naeilbeaumCardIssueFlag;
+		this.jobTrainingExperienceFlag = jobTrainingExperienceFlag;
+		this.projectExperienceFlag = projectExperienceFlag;
+		this.githubExperience = githubExperience;
+		this.topcitScore = topcitScore;
+		this.learningProgrammingLanguage = learningProgrammingLanguage;
+		this.validItCertificate = validItCertificate;
+	}
+	
+	public void setCourse(Course course) {
+		this.course = course;
+	}
+	
+	public void setPerson(Person person) {
+		this.person = person;
+	}
 }

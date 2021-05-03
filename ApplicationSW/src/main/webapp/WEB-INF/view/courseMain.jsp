@@ -11,6 +11,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>Management Main</title>
 
     <!-- Bootstrap core CSS -->
@@ -30,12 +32,13 @@
         <main class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">	
 			<jsp:include page="layout/courseMain.jsp" />
 			<jsp:include page="layout/courseApplicant.jsp" />
+			<jsp:include page="layout/emailContents.jsp" />
     	 </main>
     </div>
     
     <jsp:include page="layout/footer.jsp" />
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/courseMain.js"></script>
 </body>
 </html>

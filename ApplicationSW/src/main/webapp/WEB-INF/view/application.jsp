@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -11,6 +12,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.80.0">
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>Application</title>
 
     <!-- Bootstrap core CSS -->
@@ -33,7 +36,7 @@
 			    	<li><span>시간</span>&nbsp; &nbsp; 09:00 ~ 18:00</li>
 			    </ul>
 			</div>
-	        <form id="first-app-form" method="post" class="needs-validation" novalidate>
+	        <form id="first-app-form" action="<c:url value='/application'/>" method="post" class="needs-validation" novalidate>
 	            <div class="row">
 		            <div class="col-md-12 mb-3 py-2">
 		                <label for="personName">1. 이름을 적어주세요</label>
@@ -79,6 +82,7 @@
 	            </div>
 	
 	            <hr class="mb-4">
+	            <input type="hidden" name="info" value="${course.courseNo}" />
 	            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	            <button id="first-app-submit" class="btn btn-primary btn-lg btn-block mb-4" type="submit">교육신청</button>
 	        </form>
